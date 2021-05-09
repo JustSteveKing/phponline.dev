@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - "**"
+  push:
+    branches:
+      - "main"
+
+jobs:
+  Unit:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '7.3', '7.4', '8.0' ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up PHP Version ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+
+      - name: Environment Check
+        run: |
+          php --version
+          composer --version
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Ensure .env and API_KEY is setup
+        run: |
+          cp .env.example .env
+          php artisan key:generate --ansi
+
+      - name: Unit Tests
+        run: vendor/bin/phpunit
