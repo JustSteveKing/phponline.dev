@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'larastreamers' => [
+        'feed' => [
+            'uri' => 'https://larastreamers.com/feed',
+        ],
+    ],
+
 ];
