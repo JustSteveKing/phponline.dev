@@ -89,4 +89,12 @@ Route::as('static:')->group(function () {
             App\Http\Controllers\Static\Packages\ShowController::class,
         )->name('show');
     });
+
+    /**
+     * Stream Routes
+     */
+    Route::get(
+        '/streams',
+        App\Http\Controllers\Static\Streams\IndexController::class,
+    )->name('streams:index');
 });
