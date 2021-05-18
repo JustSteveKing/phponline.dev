@@ -8,7 +8,7 @@ use shweshi\OpenGraph\OpenGraph;
 
 class CheckMetaButton extends Component
 {
-    public int $feedID;
+    public Feed $feed;
     public string $url;
     public bool $verified;
 
@@ -22,7 +22,12 @@ class CheckMetaButton extends Component
         if ($data->contains(
             key: config('phponline.verification.feeds.key'),
         )) {
+            $this->feed->update([
+                'verified' => true,
+            ]);
+
             $this->verified = true;
+
             $this->emit(
                 'notify',
                 "Your feed for {$this->url} has been verified",
@@ -39,7 +44,7 @@ class CheckMetaButton extends Component
 
     public function mount(Feed $feed)
     {
-        $this->feedID = $feed->id;
+        $this->feed = $feed;
         $this->url = $feed->url;
         $this->verified = $feed->verified;
     }
