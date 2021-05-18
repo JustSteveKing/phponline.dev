@@ -5,8 +5,6 @@
         </h2>
     </x-site.header>
     <x-site.container class="mb-12">
-
-        {{-- <livewire:articles.manage /> --}}
-        Create livewire component
+        <livewire:articles.create-article />
     </x-site.container>
 </x-app-layout>
