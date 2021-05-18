@@ -26,16 +26,24 @@
                         </div>
                         <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                             <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
-                                @foreach ($feed->meta as $type => $content)
-                                    <div class="sm:col-span-1">
-                                        <dt class="text-md font-medium text-gray-500">
-                                            {{ $type }}
-                                        </dt>
-                                        <dd class="mt-1 text-md text-gray-900">
-                                            {{ $content }}
-                                        </dd>
-                                    </div>
-                                @endforeach
+                                @isset($feed->meta)
+                                    @forelse ($feed->meta as $type => $content)
+                                        <div class="sm:col-span-1">
+                                            <dt class="text-md font-medium text-gray-500">
+                                                {{ $type }}
+                                            </dt>
+                                            <dd class="mt-1 text-md text-gray-900">
+                                                {{ $content }}
+                                            </dd>
+                                        </div>
+                                    @empty
+                                        <div class="sm:col-span-2">
+                                            <x-site.empty>
+                                                No meta information fetched yet.
+                                            </x-site.empty>
+                                        </div>
+                                    @endforelse
+                                @endisset
                             </dl>
                         </div>
                     </div>
