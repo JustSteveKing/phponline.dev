@@ -44,7 +44,7 @@ return [
                 'name' => 'Podcasts',
                 'link' => '/podcasts',
                 'title' => 'View our Podcasts',
-                'pattern' => 'podcasts:index'
+                'pattern' => 'static:podcasts:index'
             ]
         ],
 

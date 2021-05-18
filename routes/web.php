@@ -110,6 +110,13 @@ Route::as('static:')->group(function () {
     });
 
     /**
+     * Podcast Routes
+     */
+    Route::prefix('podcasts')->as('podcasts')->group(function () {
+        Route::view('/', 'static.podcasts.index')->name('index');
+    });
+
+    /**
      * Stream Routes
      */
     Route::get(
