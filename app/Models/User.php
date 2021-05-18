@@ -57,40 +57,48 @@ class User extends Authenticatable
     public function jobTitle(): BelongsTo
     {
         return $this->belongsTo(
-            JobTitle::class,
-            'job_title_id',
+            related: JobTitle::class,
+            foreignKey: 'job_title_id',
         );
     }
 
     public function company(): BelongsTo
     {
         return $this->belongsTo(
-            Company::class,
-            'company_id',
+            related: Company::class,
+            foreignKey: 'company_id',
         );
     }
 
     public function articles(): HasMany
     {
         return $this->hasMany(
-            Article::class,
-            'user_id',
+            related: Article::class,
+            foreignKey: 'user_id',
         );
     }
 
     public function packages(): HasMany
     {
         return $this->hasMany(
-            Package::class,
-            'user_id',
+            related: Package::class,
+            foreignKey: 'user_id',
         );
     }
 
     public function podcasts(): HasMany
     {
         return $this->hasMany(
-            Podcast::class,
-            'user_id',
+            related: Podcast::class,
+            foreignKey: 'user_id',
+        );
+    }
+
+    public function feeds(): HasMany
+    {
+        return $this->hasMany(
+            related: Feed::class,
+            foreignKey: 'user_id',
         );
     }
 }
