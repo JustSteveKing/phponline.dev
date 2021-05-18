@@ -15,6 +15,9 @@ class ShowController extends Controller
     {
         $this->authorize('view', $feed);
 
-        return view('app.dashboard.feeds.show', compact('feed'));
+        $key = config('phponline.verification.feeds.key');
+        $snippet = '<meta type="' . $key . '" content="' . $feed->verification_token . '" />';
+
+        return view('app.dashboard.feeds.show', compact('feed', 'snippet', 'key'));
     }
 }
