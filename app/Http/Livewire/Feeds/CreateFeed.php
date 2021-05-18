@@ -82,7 +82,7 @@ class CreateFeed extends Component
 
         session()->flash(
             'verified',
-            "Please create a meta tag on your website to verify ownership.<br />Use the type of '{$meta}' with the content: {$feed->verification_token}"
+            "Please create a meta tag on your website to verify ownership.<br />Use the name of '{$meta}' with the content: {$feed->verification_token}"
         );
 
         $this->redirect(route('dashboard:feeds:index'));

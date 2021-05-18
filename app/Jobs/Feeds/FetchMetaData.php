@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Jobs\Feeds;
 
 use App\Models\Feed;
+use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use shweshi\OpenGraph\OpenGraph;
 use Illuminate\Queue\SerializesModels;
@@ -15,19 +16,22 @@ use Illuminate\Contracts\Queue\ShouldBeUnique;
 
 class FetchMetaData implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Batchable;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
 
     public function __construct(
         public int $feedId,
     ) {}
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
     public function handle()
     {
+        if ($this->batch()->canceled()) {
+            return;
+        }
+        
         $feed = Feed::find($this->feedId);
 
         // do stuff

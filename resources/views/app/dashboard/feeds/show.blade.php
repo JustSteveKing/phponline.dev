@@ -52,7 +52,7 @@
                     >
                         <div class="text-lg font-normal space-y-2">
                             <p>Add a meta tag to your website:</p>
-                            <p>Type: <span class="font-semibold">{{ $key }}</span></p>
+                            <p>Name: <span class="font-semibold">{{ $key }}</span></p>
                             <p>Content: <span class="font-semibold">{{ $feed->verification_token }}</span></p>
                             
                             <pre>

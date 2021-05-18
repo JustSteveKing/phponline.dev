@@ -22,7 +22,7 @@ class Feed extends Model
     ];
 
     protected $casts = [
-        'meta' => 'json',
+        'meta' => 'array',
         'verified' => 'boolean',
     ];
 
