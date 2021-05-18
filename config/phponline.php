@@ -2,6 +2,12 @@
 
 return [
 
+    'verification' => [
+        'feeds' => [
+            'key' => 'phponline:verification'
+        ],
+    ],
+
     'twitter' => [
 
         'handle' => 'PhpOnlineDev',

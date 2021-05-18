@@ -35,6 +35,25 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
                 App\Http\Controllers\Dashboard\Articles\CreateController::class,
             )->name('create');
         });
+
+        /**
+         * Feeds
+         */
+        Route::prefix('feeds')->as('feeds:')->group(function () {
+            Route::get(
+                '/',
+                App\Http\Controllers\Dashboard\Feeds\IndexController::class,
+            )->name('index');
+            Route::get(
+                'create',
+                App\Http\Controllers\Dashboard\Feeds\CreateController::class,
+            )->name('create');
+
+            Route::get(
+                '{feed:uuid}',
+                App\Http\Controllers\Dashboard\Feeds\ShowController::class,
+            )->name('show');
+        });
     });
 });
 

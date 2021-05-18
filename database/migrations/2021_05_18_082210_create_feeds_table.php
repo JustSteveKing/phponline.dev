@@ -18,7 +18,8 @@ class CreateFeedsTable extends Migration
             $table->uuid('uuid');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('url');
+            $table->string('url')->unique();
+            $table->string('feed_url')->nullable();
             $table->json('meta')->nullable();
 
             $table->string('verification_token')->nullable();
