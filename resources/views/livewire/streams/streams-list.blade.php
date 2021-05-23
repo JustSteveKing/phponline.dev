@@ -11,7 +11,12 @@
         <ul class="w-full space-y-6">
             @forelse($streams as $stream)
             <li class="flex flex-col bg-white w-full mx-auto rounded-lg shadow-md hover:shadow-lg">
-                <a href="http://phponline.test/packages/uri-builder" class="flex items-center justify-between px-6 py-3 bg-gray-900 cursor-pointer">
+                <a
+                    target="__blank"
+                    rel="noopener nofollow"
+                    href="{{ $stream['external_url'] }}"
+                    class="flex items-center justify-between px-6 py-3 bg-gray-900 cursor-pointer"
+                >
                     <span class="flex items-center">
                         <h4 class="flex flex-col mx-3 text-white">
                             <span class="font-semibold text-lg">{!! $stream['title'] !!}</span>

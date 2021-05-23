@@ -123,4 +123,17 @@ Route::as('static:')->group(function () {
         '/streams',
         App\Http\Controllers\Static\Streams\IndexController::class,
     )->name('streams:index');
+
+    Route::prefix('@{user:username}')->as('profile:')->group(function () {
+        
+        Route::get(
+            '/',
+            App\Http\Controllers\Static\Users\ProfileController::class
+        )->name('show');
+
+        Route::get(
+            '/feeds/{feed:uuid}',
+            App\Http\Controllers\Static\Users\Feeds\ShowController::class,
+        )->name('feeds:show');
+    });
 });

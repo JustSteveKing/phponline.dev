@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Builders\FeedBuilder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Feed extends Model
@@ -37,5 +39,18 @@ class Feed extends Model
             related: User::class,
             foreignKey: 'user_id',
         );
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(
+            related: FeedItem::class,
+            foreignKey: 'feed_id',
+        );
+    }
+
+    public function newEloquentBuilder($query): FeedBuilder
+    {
+        return new FeedBuilder($query);
     }
 }

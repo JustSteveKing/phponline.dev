@@ -27,11 +27,7 @@ class FetchMetaData implements ShouldQueue
     ) {}
 
     public function handle()
-    {
-        if ($this->batch()->canceled()) {
-            return;
-        }
-        
+    {       
         $feed = Feed::find($this->feedId);
 
         // do stuff
