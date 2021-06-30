@@ -5,12 +5,15 @@ namespace App\Http\Livewire\Articles;
 use App\Models\Category;
 use App\Support\ArticleLevel;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class CreateArticle extends Component
 {
     public string $title = '';
 
     public string $body = '';
+
+    public string $markedBody = '';
 
     public string $summary = '';
 
@@ -43,6 +46,11 @@ class CreateArticle extends Component
     public function mount()
     {
         $this->categories = Category::get()->toArray();
+    }
+
+    public function parseMarkdown()
+    {
+        $this->markedBody = Str::markdown($this->body);
     }
 
     public function render()
