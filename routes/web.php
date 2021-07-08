@@ -35,6 +35,25 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
                 App\Http\Controllers\Dashboard\Articles\CreateController::class,
             )->name('create');
         });
+
+        /**
+         * Feeds
+         */
+        Route::prefix('feeds')->as('feeds:')->group(function () {
+            Route::get(
+                '/',
+                App\Http\Controllers\Dashboard\Feeds\IndexController::class,
+            )->name('index');
+            Route::get(
+                'create',
+                App\Http\Controllers\Dashboard\Feeds\CreateController::class,
+            )->name('create');
+
+            Route::get(
+                '{feed:uuid}',
+                App\Http\Controllers\Dashboard\Feeds\ShowController::class,
+            )->name('show');
+        });
     });
 });
 
@@ -88,5 +107,33 @@ Route::as('static:')->group(function () {
             '{package}',
             App\Http\Controllers\Static\Packages\ShowController::class,
         )->name('show');
+    });
+
+    /**
+     * Podcast Routes
+     */
+    Route::prefix('podcasts')->as('podcasts')->group(function () {
+        Route::view('/', 'static.podcasts.index')->name('index');
+    });
+
+    /**
+     * Stream Routes
+     */
+    Route::get(
+        '/streams',
+        App\Http\Controllers\Static\Streams\IndexController::class,
+    )->name('streams:index');
+
+    Route::prefix('@{user:username}')->as('profile:')->group(function () {
+        
+        Route::get(
+            '/',
+            App\Http\Controllers\Static\Users\ProfileController::class
+        )->name('show');
+
+        Route::get(
+            '/feeds/{feed:uuid}',
+            App\Http\Controllers\Static\Users\Feeds\ShowController::class,
+        )->name('feeds:show');
     });
 });

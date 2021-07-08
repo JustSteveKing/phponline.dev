@@ -19,7 +19,10 @@
                 src="{{ $article->author->profile_photo_url }}"
                 class="w-8 h-8 object-cover rounded-full" alt="{{ $article->author->name }}'s avatar"
             />
-            <a class="text-gray-700 text-sm mx-3" href="">
+            <a
+                class="text-gray-700 text-sm mx-3"
+                href="{{ route('static:profile:show', $article->author->username) }}"
+            >
                 {{ $article->author->name }}
             </a>
         </div>

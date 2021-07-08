@@ -11,18 +11,28 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/default.min.css">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        @stack('styles')
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
     </head>
     <body class="font-sans antialiased">
+
         <div class="min-h-screen bg-gray-100">
             <x-site.navigation />
 
             <main class="pt-16 relative">
+                <livewire:notification />
+
                 {{ $slot }}
             </main>
 
@@ -30,6 +40,7 @@
         </div>
 
         @stack('modals')
+        @stack('scripts')
 
         @livewireScripts
     </body>

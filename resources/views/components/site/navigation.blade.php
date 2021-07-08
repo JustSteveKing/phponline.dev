@@ -86,6 +86,10 @@
                                     {{ __('Your Articles') }}
                                 </x-jet-dropdown-link>
 
+                                <x-jet-dropdown-link href="{{ route('dashboard:feeds:index') }}">
+                                    {{ __('Your Feeds') }}
+                                </x-jet-dropdown-link>
+
                                 {{-- <x-jet-dropdown-link href="{{ route('dashboard:podcasts:index') }}">
                                     {{ __('Your Podcasts') }}
                                 </x-jet-dropdown-link> --}}

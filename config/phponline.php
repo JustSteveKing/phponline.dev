@@ -2,6 +2,12 @@
 
 return [
 
+    'verification' => [
+        'feeds' => [
+            'key' => 'phponline:verification'
+        ],
+    ],
+
     'twitter' => [
 
         'handle' => 'PhpOnlineDev',
@@ -17,6 +23,12 @@ return [
 
         'main' => [
             [
+                'name' => 'Streams',
+                'link' => '/streams',
+                'title' => 'View scheduled streams',
+                'pattern' => 'static:streams:index'
+            ],
+            [
                 'name' => 'Articles',
                 'link' => '/blog',
                 'title' => 'View our Articles',
@@ -28,12 +40,12 @@ return [
                 'title' => 'View our Packages',
                 'pattern' => 'static:packages:index'
             ],
-            // [
-            //     'name' => 'Podcasts',
-            //     'link' => '/podcasts',
-            //     'title' => 'View our Podcasts',
-            //     'pattern' => 'podcasts:index'
-            // ]
+            [
+                'name' => 'Podcasts',
+                'link' => '/podcasts',
+                'title' => 'View our Podcasts',
+                'pattern' => 'static:podcasts:index'
+            ]
         ],
 
         'footer' => [

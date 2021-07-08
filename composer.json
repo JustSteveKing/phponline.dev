@@ -16,9 +16,12 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
+        "scrivo/highlight.php": "v9.18.1.6",
         "shweshi/opengraph": "^1.1",
         "spatie/data-transfer-object": "^3.1",
+        "spatie/dns": "^2.0",
         "spatie/laravel-event-sourcing": "^4.10",
+        "spatie/laravel-ray": "^1.18",
         "spatie/packagist-api": "^2.0"
     },
     "require-dev": {
