@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/default.min.css">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        @stack('styles')
+
         @livewireStyles
 
         <!-- Scripts -->
@@ -30,7 +32,7 @@
 
             <main class="pt-16 relative">
                 <livewire:notification />
-                
+
                 {{ $slot }}
             </main>
 
@@ -38,6 +40,7 @@
         </div>
 
         @stack('modals')
+        @stack('scripts')
 
         @livewireScripts
     </body>

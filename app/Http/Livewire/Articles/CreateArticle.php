@@ -5,12 +5,15 @@ namespace App\Http\Livewire\Articles;
 use App\Models\Category;
 use App\Support\ArticleLevel;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class CreateArticle extends Component
 {
     public string $title = '';
 
     public string $body = '';
+
+    public string $markedBody = '';
 
     public string $summary = '';
 
@@ -23,6 +26,8 @@ class CreateArticle extends Component
     public array $categories = [];
 
     public array $topics = [];
+
+    public $listeners = ['refresh' => '$refresh'];
 
     protected $rules = [
         'title' => ['required', 'string'],
@@ -43,6 +48,11 @@ class CreateArticle extends Component
     public function mount()
     {
         $this->categories = Category::get()->toArray();
+    }
+
+    public function markedField($field)
+    {
+        return Str::markdown($this->{$field});
     }
 
     public function render()

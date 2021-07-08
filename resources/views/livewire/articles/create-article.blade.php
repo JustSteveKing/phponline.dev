@@ -16,6 +16,7 @@
                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 required></textarea>
         </div>
+        <!-- <x-markdown.editor field="summary" :markedField="$this->markedField('summary')" title="Article Summary"/> -->
         <div class="py-3 px-6">
             <x-jet-label for="level" value="{{ __('Select a difficulty') }}" />
             <select
@@ -30,14 +31,7 @@
             </select>
             <x-jet-input-error for="feed" class="mt-2" />
         </div>
-        <div class="py-3 px-6">
-            <label for="body" class="block text-sm font-medium text-gray-700">
-                Article Body
-            </label>
-            <textarea id="body" wire:model="body" type="text" rows="12"
-                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                required></textarea>
-        </div>
+        <x-markdown.editor field="body" :markedField="$this->markedField('body')" title="Article Body"/>
         <div class="py-3 px-6">
             <x-jet-action-message class="mr-3" on="saved">
                 {{ __('Saved.') }}
@@ -49,3 +43,7 @@
         </div>
     </form>
 </section>
+
+@push('scripts')
+<script type="module" src="https://cdn.jsdelivr.net/npm/@github/markdown-toolbar-element@1.4.0/dist/index.min.js"></script>
+@endpush
