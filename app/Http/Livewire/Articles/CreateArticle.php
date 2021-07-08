@@ -27,6 +27,8 @@ class CreateArticle extends Component
 
     public array $topics = [];
 
+    public $listeners = ['refresh' => '$refresh'];
+
     protected $rules = [
         'title' => ['required', 'string'],
         'summary' => ['required', 'string', 'min:10', 'max:120'],
@@ -48,9 +50,9 @@ class CreateArticle extends Component
         $this->categories = Category::get()->toArray();
     }
 
-    public function parseMarkdown()
+    public function markedField($field)
     {
-        $this->markedBody = Str::markdown($this->body);
+        return Str::markdown($this->{$field});
     }
 
     public function render()
