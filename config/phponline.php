@@ -40,12 +40,12 @@ return [
                 'title' => 'View our Packages',
                 'pattern' => 'static:packages:index'
             ],
-            [
-                'name' => 'Podcasts',
-                'link' => '/podcasts',
-                'title' => 'View our Podcasts',
-                'pattern' => 'static:podcasts:index'
-            ]
+//            [
+//                'name' => 'Podcasts',
+//                'link' => '/podcasts',
+//                'title' => 'View our Podcasts',
+//                'pattern' => 'static:podcasts:index'
+//            ]
         ],
 
         'footer' => [

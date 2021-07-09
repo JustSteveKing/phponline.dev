@@ -27,7 +27,7 @@ class FetchFeedItems extends Command
             $importedFeed = Reader::import(
                 uri: $feed->feed_url,
             );
-            
+
             foreach ($importedFeed as $item) {
                 $xml = simplexml_load_string($item->saveXML());
                 $feedItem = (array) $xml;

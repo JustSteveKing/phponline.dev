@@ -42,7 +42,7 @@ class Autocomplete extends Component
     {
         $model = new $this->model;
         $this->searching = true;
-        
+
         $results = $model->where(
             $this->searchKey,
             'LIKE',
@@ -52,7 +52,15 @@ class Autocomplete extends Component
         $this->results = $results->toArray();
     }
 
-    public function selected(string $id)
+    public function selectAll(): void
+    {
+        $this->emit('reset');
+        $this->query = '';
+
+        $this->searching = false;
+    }
+
+    public function selected(string $id): void
     {
         $model = (new $this->model)->find($id);
         $this->emit(

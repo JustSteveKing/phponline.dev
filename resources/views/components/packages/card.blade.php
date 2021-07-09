@@ -18,7 +18,7 @@
         <div class="py-2 text-lg text-gray-700">
             {!! $package->body !!}
         </div>
-        <a href="" class="flex items-center mt-4 text-gray-700 cursor-pointer">
+        <a href="{{ $package->external_url }}" class="flex items-center mt-4 text-gray-700 cursor-pointer">
             <x-icons.link-external class="h-6 w-6" />
             <p class="px-2 text-sm truncate">
                 {{ $package->external_url }}

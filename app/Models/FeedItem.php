@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Builders\FeedItemBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -28,5 +29,10 @@ class FeedItem extends Model
             related: Feed::class,
             foreignKey: 'feed_id',
         );
+    }
+
+    public function newEloquentBuilder($query): FeedItemBuilder
+    {
+        return new FeedItemBuilder($query);
     }
 }

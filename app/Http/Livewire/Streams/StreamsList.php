@@ -17,7 +17,8 @@ class StreamsList extends Component
     public string $query = '';
 
     protected $listeners = [
-        'authorSelected' => 'selected'
+        'authorSelected' => 'selected',
+        'reset' => 'resetStreams'
     ];
 
     public function mount(): void
@@ -34,6 +35,11 @@ class StreamsList extends Component
         )->toArray();
 
         $this->streams = $streams->toArray();
+    }
+
+    public function resetStreams(): void
+    {
+        $this->streams = Stream::all()->toArray();
     }
 
     public function selected($payload): void

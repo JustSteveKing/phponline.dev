@@ -17,6 +17,8 @@
 
     <livewire:packages.latest-packages />
 
-    <livewire:podcasts.latest-podcasts />
-    
+    <livewire:feeds.latest-items />
+
+{{--    <livewire:podcasts.latest-podcasts />--}}
+
 </x-app-layout>

@@ -69,7 +69,7 @@ Route::as('static:')->group(function () {
      * Blog Article Routes
      */
     Route::prefix('blog')->as('articles:')->group(function () {
-        
+
         /**
          * Articles Index
          */
@@ -112,9 +112,9 @@ Route::as('static:')->group(function () {
     /**
      * Podcast Routes
      */
-    Route::prefix('podcasts')->as('podcasts')->group(function () {
-        Route::view('/', 'static.podcasts.index')->name('index');
-    });
+//    Route::prefix('podcasts')->as('podcasts')->group(function () {
+//        Route::view('/', 'static.podcasts.index')->name('index');
+//    });
 
     /**
      * Stream Routes
@@ -125,15 +125,17 @@ Route::as('static:')->group(function () {
     )->name('streams:index');
 
     Route::prefix('@{user:username}')->as('profile:')->group(function () {
-        
+
         Route::get(
             '/',
             App\Http\Controllers\Static\Users\ProfileController::class
         )->name('show');
 
-        Route::get(
-            '/feeds/{feed:uuid}',
-            App\Http\Controllers\Static\Users\Feeds\ShowController::class,
-        )->name('feeds:show');
+        Route::prefix('feeds/{feed:uuid}')->as('feeds:')->group(function () {
+            Route::get(
+                '/',
+                App\Http\Controllers\Static\Users\Feeds\ShowController::class,
+            )->name('show');
+        });
     });
 });

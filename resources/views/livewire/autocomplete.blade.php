@@ -10,6 +10,12 @@
     @if ($searching)
         <div class="bg-white origin-top-right absolute right-0 mt-2 w-full max-h-40 rounded-md ring-1 ring-black ring-opacity-5 overflow-y-scroll focus:outline-none z-50">
             <div class="py-1">
+                <a
+                    wire:click="selectAll"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                >
+                    ALL
+                </a>
                 @forelse ($results as $result)
                     <a
                         wire:click="selected({{ $result['id'] }})"
