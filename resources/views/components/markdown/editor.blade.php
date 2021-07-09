@@ -29,8 +29,10 @@
         required></textarea>
     <div
         x-show="mode == 'html'"
-        class="@if(! $markedField) hidden @endif mt-1 px-2 py-3 bg-white block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md h-64 prose prose-xl max-w-full"
+        class="@if(! $markedField) hidden @endif mt-1 px-2 py-3 bg-white block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md h-64 max-w-full"
+        id="marked{{ $field }}"
         >
         {!! $markedField !!}
         </div>
 </div>
+

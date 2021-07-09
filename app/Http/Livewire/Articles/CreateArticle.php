@@ -18,8 +18,6 @@ class CreateArticle extends Component
 
     public string $body = '';
 
-    public string $markedBody = '';
-
     public string $summary = '';
 
     public string $level = '';
@@ -57,11 +55,17 @@ class CreateArticle extends Component
 
     public function markedField($field)
     {
+        if (strlen($this->{$field}) < 1) {
+            return '';
+        }
+
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer());
         $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer());
 
         $converter = new CommonMarkConverter([], $environment);
+
+        $this->dispatchBrowserEvent('marked-field-updated', ['field' => "marked{$field}"]);
 
         return $converter->convertToHtml($this->{$field});
     }
