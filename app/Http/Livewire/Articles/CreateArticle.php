@@ -4,8 +4,13 @@ namespace App\Http\Livewire\Articles;
 
 use App\Models\Category;
 use App\Support\ArticleLevel;
+use League\CommonMark\Block\Element\FencedCode;
+use League\CommonMark\Block\Element\IndentedCode;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
 use Livewire\Component;
-use Illuminate\Support\Str;
+use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
+use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
 class CreateArticle extends Component
 {
@@ -52,7 +57,13 @@ class CreateArticle extends Component
 
     public function markedField($field)
     {
-        return Str::markdown($this->{$field});
+        $environment = Environment::createCommonMarkEnvironment();
+        $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer());
+        $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer());
+
+        $converter = new CommonMarkConverter([], $environment);
+
+        return $converter->convertToHtml($this->{$field});
     }
 
     public function render()
