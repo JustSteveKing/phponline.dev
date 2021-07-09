@@ -46,4 +46,15 @@
 
 @push('scripts')
 <script type="module" src="https://cdn.jsdelivr.net/npm/@github/markdown-toolbar-element@1.4.0/dist/index.min.js"></script>
+<script>
+window.addEventListener('marked-field-updated', event => {
+    // console.log(event.detail.field);
+    hljs.highlightBlock(document.getElementById(event.detail.field));
+})
+</script>
+@endpush
+
+@push('styles')
+<link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/github.min.css">
 @endpush
